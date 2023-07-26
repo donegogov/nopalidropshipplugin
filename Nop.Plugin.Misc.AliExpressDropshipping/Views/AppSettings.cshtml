@@ -1,0 +1,21 @@
+﻿@model Nop.Plugin.Misc.AliExpress.Dropshipping.Domain.AliExpressDropshippingData
+@{
+    Layout = "_AdminLayout";
+    NopHtml.SetActiveMenuItemSystemName("nopCommerce.AliExpress.Dropshipping.plugin");
+}
+
+<h1>App Settings</h1>
+
+<p>AccessToken: @Model.AccessToken</p>
+
+<p>RefreshToken: @Model.RefreshToken</p>
+
+<p>AccessTokenExpireTime: @Model.AccessTokenExpireTime</p>
+
+<p>AccessTokenValidTime: @Model.AccessTokenValidTime</p>
+
+<p>RefreshTokenExpireTime: @Model.RefreshTokenExpireTime</p>
+
+<p>RefreshTokenValidTime: @Model.RefreshTokenValidTime</p>
+
+<p>AccountEmail: @Model.AccountEmail</p>

@@ -1,0 +1,227 @@
+﻿@using Newtonsoft.Json.Linq;
+@using Nop.Plugin.Misc.AliExpress.Dropshipping.AliexpressApi;
+@using Nop.Plugin.Misc.AliExpress.Dropshipping.ViewModel;
+@model AliProductSearchModel
+@{
+    Layout = "_AdminLayout";
+    NopHtml.SetActiveMenuItemSystemName("nopCommerce.AliExpress.Dropshipping.plugin");
+    const string hideSearchBlockAttributeName = "ProductListPage.HideSearchBlock";
+    var hideSearchBlock = await genericAttributeService.GetAttributeAsync<bool>(await workContext.GetCurrentCustomerAsync(), hideSearchBlockAttributeName);
+}
+
+<link rel="stylesheet" href="~/Plugins/Misc.AliExpress.Dropshipping/Content/css/ali.css" />
+<script asp-exclude-from-bundle="true" src="~/Plugins/Misc.AliExpress.Dropshipping/Content/js/ali.js" asp-location="Footer"></script>
+
+<h1>List Products</h1>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="cards-group">
+                <div class="card card-default card-search" style="height:100% !important">
+                    <div class="card-body">
+                        <div class="row search-row @(!hideSearchBlock ? "opened" : "")" data-hideAttribute="@hideSearchBlockAttributeName">
+                            <div class="search-text">@T("Admin.Common.Search")</div>
+                            <div class="icon-search"><i class="fas fa-search" aria-hidden="true"></i></div>
+                            <div class="icon-collapse"><i class="far fa-angle-@(!hideSearchBlock ? "up" : "down")" aria-hidden="true"></i></div>
+                        </div>
+
+                        <div class="search-body @(hideSearchBlock ? "closed" : "")">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label>Language</label>
+                                        </div>
+                                        <div class="col-md-8">   
+                                            <div class="ali-select-box">
+                                                <div class="ali-select-option">
+                                                    <input type="text" id="ali-target-language" placeholder="Select" class="ali-soValue" readonly name="" />
+                                                </div>
+                                                <div class="ali-content">
+                                                    <div class="ali-search">
+                                                        <input type="text" class="ali-optionSearch" placeholder="Search" name="" />
+                                                    </div>
+                                                    <ul class="ali-options">
+                                                        @{
+                                                            foreach (var item in Model.TargetLanguage) // <-- Note that here we used JObject instead of usual JProperty
+                                                            {
+                                                                <li>
+                                                                    @item
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label>Feed</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="ali-select-box">
+                                                <div class="ali-select-option">
+                                                    <input type="text" id="ali-feed-name" placeholder="Select" class="ali-soValue" readonly name="" />
+                                                </div>
+                                                <div class="ali-content">
+                                                    <div class="ali-search">
+                                                        <input type="text" class="ali-optionSearch" placeholder="Search" name="" />
+                                                    </div>
+                                                    <ul class="ali-options">
+                                                        @{
+                                                            foreach (var item in Model.JArrayFeedName) // <-- Note that here we used JObject instead of usual JProperty
+                                                            {
+                                                                <li>
+                                                                    @item["promo_name"].ToString()
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label>Category</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="ali-select-box">
+                                            <div class="ali-select-option">
+                                                <input type="text" placeholder="Select" class="ali-soValue" readonly name="" />
+                                            </div>
+                                            <div class="ali-content">
+                                                <div class="ali-search">
+                                                    <input type="text" id="ali-category" class="ali-optionSearch" placeholder="Search" name="" />
+                                                </div>
+                                                <ul class="ali-options">
+                                                    @{
+                                                        foreach (var item in Model.JArrayCategory) // <-- Note that here we used JObject instead of usual JProperty
+                                                        {
+                                                            <li>
+                                                                @item["category_name"].ToString()
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label>Currency</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="ali-select-box">
+                                            <div class="ali-select-option">
+                                                <input type="text" id="ali-currency" placeholder="Select" class="ali-soValue" readonly name="" />
+                                            </div>
+                                            <div class="ali-content">
+                                                <div class="ali-search">
+                                                    <input type="text" class="ali-optionSearch" placeholder="Search" name="" />
+                                                </div>
+                                                <ul class="ali-options">
+                                                    @{
+                                                        foreach (var item in Model.Currencies) // <-- Note that here we used JObject instead of usual JProperty
+                                                        {
+                                                            <li>
+                                                                @item
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label>Country</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="ali-select-box">
+                                            <div class="ali-select-option">
+                                                <input type="text" id="ali-country" placeholder="Select" class="ali-soValue" readonly name="" />
+                                            </div>
+                                            <div class="ali-content">
+                                                <div class="ali-search">
+                                                    <input type="text" class="ali-optionSearch" placeholder="Search" name="" />
+                                                </div>
+                                                <ul class="ali-options">
+                                                    @{
+                                                        foreach (var item in Model.CountriesAvailable) // <-- Note that here we used JObject instead of usual JProperty
+                                                        {
+                                                            <li>
+                                                                @item
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label>Sort</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="ali-select-box">
+                                            <div class="ali-select-option">
+                                                <input type="text" id="ali-sort" placeholder="Select" class="ali-soValue" readonly name="" />
+                                            </div>
+                                            <div class="ali-content">
+                                                <div class="ali-search">
+                                                    <input type="text" class="ali-optionSearch" placeholder="Search" name="" />
+                                                </div>
+                                                <ul class="ali-options">
+                                                    @{
+                                                        foreach (var item in Model.Sort) // <-- Note that here we used JObject instead of usual JProperty
+                                                        {
+                                                            <li>
+                                                                @item
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-center col-12">
+                                    <button type="button" id="search-products" class="btn btn-primary btn-search">
+                                        <i class="fas fa-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-default">
+                    <div class="card-body">
+                        <nop-doc-reference asp-string-resource="@T("Admin.Documentation.Reference.Products", Docs.Products + Utm.OnAdmin)" />
+
+                        @await Html.PartialAsync("Table", new DataTableSearchModel
+                        {
+                            FeedNameId = "ali-feed-name",
+                            CategoryId = "ali-category",
+                            CountryId = "ali-country",
+                            CurrencyId = "ali-currency",
+                            SortId = "ali-sort",
+                            TargetLanguageId = "ali-target-language",
+                            Category = Model.JArrayCategory
+                        })
+            </div>
+        </div>
+    </div>
+</section>

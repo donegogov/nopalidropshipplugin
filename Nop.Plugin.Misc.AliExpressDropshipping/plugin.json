@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "AliExpress Dropshipping",
+  "SystemName": "Misc.AliExpress.Dropshipping",
+  "Version": "2.00",
+  "SupportedVersions": [ "4.60" ],
+  "Author": "Donatello team",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.AliExpress.Dropshipping.dll",
+  "Description": "nopCommerce AliExpress for Dropshipping"
+}
