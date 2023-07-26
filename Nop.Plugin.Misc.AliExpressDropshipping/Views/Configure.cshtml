@@ -1,0 +1,26 @@
+﻿@model Nop.Plugin.Misc.AliExpress.Dropshipping.Models.GetUrlFromServerParameters
+@{
+    Layout = "_ConfigurePlugin";
+    NopHtml.SetActiveMenuItemSystemName("nopCommerce.AliExpress.Dropshipping.plugin");
+}
+
+
+<h1>Aliexpress Dropship Plugin</h1>
+
+<p>The Aliexpress Dropship plugin from Donatello allows you to import products from Aliexpress, to add margin to the products, to change attributes, manage orders and much more.</p>
+
+<p>Click the link bellow to get authorization URL. After you get authorization URL, you will need to authorize this app on aliexpress so the app can import products and manage orders, this will be explained in more details in the next step</p>
+
+<p>For this plugin to work you will need to enter Store URL in administration area and its important that is correct'because server will sent requests to Store URL!'</p>
+
+@{
+    if (Model.IsError == false)
+    {
+        <a href="@Model.Url" target="_blank" class="btn btn-primary">Get Aliexpress Authorization URL</a>
+    }
+    else if(Model.IsError == true)
+    {
+        <p>@Model.ErrorMessage</p>
+    }
+}
+    

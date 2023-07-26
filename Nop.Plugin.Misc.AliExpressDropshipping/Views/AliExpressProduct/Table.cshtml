@@ -1,0 +1,70 @@
+﻿@using Nop.Plugin.Misc.AliExpress.Dropshipping.ViewModel;
+@model DataTableSearchModel
+
+<table id="ali-products" class="display nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Main Picture</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Category</th>
+            <th>Shop Url</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Main Picture</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Category</th>
+            <th>Shop Url</th>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    var queryFillterParams = '?';
+    var feedName = $('#@Model.FeedNameId').val();
+    @Model.CategoryName = $('#@Model.CategoryId').val();
+    @foreach (var item in Model.Category)
+    {
+        if(item["category_name"].ToString() == Model.CategoryName)
+        {
+            Model.AliCategoryId = item["category_id"].ToString();
+        }
+    }
+    var currency = $('#@Model.CurrencyId').val();
+    var country = $('#@Model.CountryId').val();
+    var targetLanguage = $('#@Model.TargetLanguageId').val();
+    queryFillterParams += 'country=' + country + '&targetCurrency=' + currency + '& targetLanguage=' + targetLanguage + '&pageSize=50&sort=' + sort + '&pageNumber=1&categoryId=' + @Model.AliCategoryId + '&feedName=' + feedName; 
+
+    new DataTable('#ali-products', {
+        ajax: '/AliExpressProduct/ListProducts' + queryFillterParams,
+        columns: [
+            {
+                data: 'name'
+            },
+            {
+                data: 'position',
+                render: function (data, type) {
+                    if (type === 'display') {
+                        let link = 'http://datatables.net';
+
+                        if (data[0] < 'H') {
+                            link = 'http://cloudtables.com';
+                        }
+                        else if (data[0] < 'S') {
+                            link = 'http://editor.datatables.net';
+                        }
+
+                        return '<a href="' + link + '">' + data + '</a>';
+                    }
+
+                    return data;
+                }
+            },
+</script>
