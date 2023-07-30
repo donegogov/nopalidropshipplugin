@@ -20,10 +20,13 @@
 
   <ItemGroup>
     <None Remove="Content\css\ali.css" />
+    <None Remove="Content\js\admin.table.js" />
     <None Remove="Content\js\ali.js" />
     <None Remove="logo.png" />
     <None Remove="plugin.json" />
     <None Remove="Views\AliExpressProduct\List.cshtml" />
+    <None Remove="Views\AliExpressProduct\Table.cshtml" />
+    <None Remove="Views\AliExpressProduct\_Table.Definition.cshtml" />
     <None Remove="Views\AppSettings.cshtml" />
     <None Remove="Views\Configure.cshtml" />
     <None Remove="Views\Confirm.cshtml" />
@@ -35,6 +38,11 @@
     <Content Include="Content\css\ali.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\js\admin.table.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\js\ali.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -44,7 +52,15 @@
     <Content Include="plugin.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\AliExpressProduct\List.cshtml">
+    <Content Include="Views\List.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Table.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_Table.Definition.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\AppSettings.cshtml">
@@ -62,6 +78,10 @@
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj" />
     <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
     <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\AliExpressProduct\" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target -->

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.EMMA;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json.Linq;
+using Nop.Plugin.Misc.AliExpress.Dropshipping.Models;
 
 namespace Nop.Plugin.Misc.AliExpress.Dropshipping.ViewModel
 {
-    public class AliProductSearchModel
+    public class AliProductSearchModel : BaseSearchModel
     {
         public JArray JArrayFeedName { get; set; }
         public JArray JArrayCategory { get; set; }
@@ -26,5 +28,16 @@ namespace Nop.Plugin.Misc.AliExpress.Dropshipping.ViewModel
         {
             "priceAsc", "priceDesc", "volumeAsc", "volumeDesc", "discountAsc", "discountDesc", "DSRratingAsc", "DSRratingDesc" 
         };
+        public string CategoryName { get; set; }
+        public string AliCategoryId { get; set; }
+
+        public string SearchTargetLanguageId { get; set; }
+        public string SearchCategoryId { get; set; }
+        public string SearchSortId { get; set; }
+        public string SearchCountriesAvailableId { get; set; }
+        public string SearchCurrenciesId { get; set; }
+        public string SearchFeedNameId { get; set; }
+
+
     }
 }

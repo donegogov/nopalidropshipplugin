@@ -20,6 +20,7 @@ namespace Nop.Plugin.Misc.AliExpress.Dropshipping
         public static string ServerUrl { get; } = "https://alidropship.azurewebsites.net/api/";
         public static string ServerFeedNameApi { get; } = "DropShippingApi/feed-name";
         public static string ServerCategoryApi { get; } = "DropShippingApi/category";
+        public static string ServerGetProductsApi { get; } = "DropShippingApi/products";
         /// <summary>
         /// Gets a name of the route to the import contacts callback
         /// </summary>
@@ -32,6 +33,10 @@ namespace Nop.Plugin.Misc.AliExpress.Dropshipping
         /// Gets a name of the route to the import contacts callback
         /// </summary>
         public static string ListProductRoute => "Plugin.Misc.AliExpress.Dropshipping.List";
+        /// <summary>
+        /// Gets a name of the route to the import contacts callback
+        /// </summary>
+        public static string ProductsRoute => "Plugin.Misc.AliExpress.Dropshipping.ProductList";
         /// <summary>
         /// Gets a name of the route to the import contacts callback
         /// </summary>

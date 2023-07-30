@@ -318,6 +318,9 @@ C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.Ali
 C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Nop.Web.staticwebassets.runtime.json
 C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Nop.Web.exe
 C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Areas\Admin\Views\Shared\Confirm.cshtml
-C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Views\AliExpressProduct\List.cshtml
 C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Content\css\ali.css
 C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Content\js\ali.js
+C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Views\List.cshtml
+C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Views\Table.cshtml
+C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Views\_Table.Definition.cshtml
+C:\Donatello\nopCommerce_4.60.3_Source\src\Presentation\Nop.Web\Plugins\Misc.AliExpress.Dropshipping\Content\js\admin.table.js

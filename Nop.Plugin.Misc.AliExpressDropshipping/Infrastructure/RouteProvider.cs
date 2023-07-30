@@ -25,6 +25,9 @@ namespace Nop.Plugin.Misc.Sendinblue.Infrastructure
             endpointRouteBuilder.MapControllerRoute(AliExpressDropshipingDefaults.ListProductRoute, "Admin/AliExpressProduct/List",
                 new { controller = "AliExpressProduct", action = "List" });
 
+            endpointRouteBuilder.MapControllerRoute(AliExpressDropshipingDefaults.ListProductRoute, "Admin/AliExpressProduct/ProductList",
+                new { controller = "AliExpressProduct", action = "ProductList" });
+
             endpointRouteBuilder.MapControllerRoute(AliExpressDropshipingDefaults.EditProductRoute, "Admin/AliExpressProduct/Edit",
                 new { controller = "AliExpressProduct", action = "Edit" });
 

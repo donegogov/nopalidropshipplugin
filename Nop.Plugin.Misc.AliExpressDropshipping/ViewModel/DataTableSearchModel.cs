@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Nop.Plugin.Misc.AliExpress.Dropshipping.ViewModel.DataTables;
 
 namespace Nop.Plugin.Misc.AliExpress.Dropshipping.ViewModel
 {
@@ -18,5 +19,6 @@ namespace Nop.Plugin.Misc.AliExpress.Dropshipping.ViewModel
         public JArray Category { get; set; }
         public string CategoryName { get; set; }
         public string AliCategoryId { get; set; }
+        public DataUrl UrlRead { get; set; }
     }
 }
